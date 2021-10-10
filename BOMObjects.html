@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Implementation of BOM Objects</title>
+	<script type="text/javascript">
+		function createCookie(cookieName,cookieValue,daysToExpire)
+        {
+          var date = new Date();
+          date.setTime(date.getTime()+(daysToExpire*24*60*60*1000));
+          document.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toGMTString();
+        }
+		function accessCookie(cookieName)
+        {
+          var name = cookieName + "=";
+          var allCookieArray = document.cookie.split(';');
+          for(var i=0; i<allCookieArray.length; i++)
+          {
+            var temp = allCookieArray[i].trim();
+            if (temp.indexOf(name)==0)
+            return temp.substring(name.length,temp.length);
+       	  }
+        	return "";
+        }
+		function checkCookie()
+        {
+          var user = accessCookie("testCookie");
+          if (user!="")
+        	alert("Welcome Back " + user + "!!!");
+          else
+          {
+            user = prompt("Please enter your name");
+            num = prompt("How many days you want to store your name on your computer?");
+            if (user!="" && user!=null)
+            {
+            createCookie("testCookie", user, num);
+            }
+          }
+        }
+	</script>
+</head>
+<body onload="checkCookie()">
+  <h1>Implementation of BOM Objects</h1>
+        <h3>Navigator Object</h3>
+        <button onclick="myNavigatorFunction()">Click on Me!</button>
+        <p id="navi"></p>
+        <h3>Screen Object</h3>
+        <button onclick="myScreenFunction()">Click on Me!</button>
+        <p id="screen"></p>
+        <h3>JavaScript Timing</h3>
+        <p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
+        <p id="demo"></p>
+        <button onclick="myVar=setTimeout(myFunction, 3000);">Try it</button>
+        <button onclick="clearTimeout(myVar)">Stop it</button>
+        <script>
+            function myNavigatorFunction() {
+              document.getElementById("navi").innerHTML
+              document.write("<b>Navigator Object</b>"+"<br>");
+              document.write("<b>Navigator App Code :</b>  " + navigator.appCodeName + "<br>");
+              document.write("<b>Navigator App Name :</b>   " + navigator.appName + "<br>" );
+              document.write("<b>Navigator App Version :</b>     " + navigator.appVersion + "<br>" );
+              document.write("<b>Navigator App UserAgent : </b>   " + navigator.userAgent + "<br>" );
+              document.write("<b>Navigator App Language :</b>  " + navigator.language + "<br>" );
+              document.write("<b>Navigator App Platform :</b>  " + navigator.platform + "<br>" );
+              document.write("<b>Navigator Cookie Enabled :</b>   " + navigator.cookieEnabled + "<br>" );
+            }
+            function myScreenFunction() {
+                document.getElementById("screen").innerHTML
+                document.write("<b>Screen Object</b>"+"<br>");
+                document.write("<b>The screen Width is : </b>  " + screen.width + "<br>");
+                document.write("<b>The screen Height is : </b>  " + screen.height + "<br>" );
+                document.write("<b>The Widthof the Users Screen :</b>    " + screen.availWidth + "<br>" );
+                document.write("<b>The height of the Users Screen : <b/>  " + screen.availHeight + "<br>" );
+                document.write("<b>The color Depth is : </b> " + screen.colorDepth + "<br>" );
+                document.write("<b>The pixel Depth is : </b>" + screen.pixelDepth + "<br>" );
+            }
+            function myFunction(){
+                alert('Hello');
+            }
+            setInterval(myTimer, 1000);
+            function myTimer() {
+                const d = new Date();
+                document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+            }
+        </script>
+            
+
+</body>
+
+</html>
